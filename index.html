@@ -6,30 +6,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght=500;700&family=Poppins:wght=300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --primary-color: #4a69bd; --bg-color: #f8f9fa; --text-color: #2f3542; }
+        :root { --primary-color: #6a89cc; --text-color: #2f3542; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Poppins', 'Noto Serif TC', serif; background-color: var(--bg-color); color: var(--text-color); overflow-x: hidden; scroll-behavior: smooth; }
-        .music-player { position: fixed; top: 20px; right: 20px; z-index: 1000; background: rgba(255, 255, 255, 0.85); padding: 10px 15px; border-radius: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); backdrop-filter: blur(5px); display: flex; align-items: center; gap: 10px; font-size: 14px; }
-        .music-btn { background: var(--primary-color); color: white; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform 0.3s; }
-        .music-btn:hover { transform: scale(1.1); }
-        .hero-section { height: 100vh; background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; padding: 20px; }
+        body { font-family: 'Poppins', 'Noto Serif TC', serif; color: var(--text-color); overflow-x: hidden; scroll-behavior: smooth; min-height: 100vh; background: url('background.jpg') no-repeat center center fixed; background-size: cover; }
+        .hero-section { height: 100vh; background: linear-gradient(135deg, rgba(161,196,253,0.8) 0%, rgba(194,233,251,0.8) 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; padding: 20px; }
         .hero-title { font-size: 3.5rem; color: #ffffff; text-shadow: 2px 4px 10px rgba(0,0,0,0.15); margin-bottom: 20px; letter-spacing: 2px; }
         .hero-subtitle { font-size: 1.5rem; color: #f1f2f6; margin-bottom: 50px; }
         .scroll-down-btn { position: absolute; bottom: 40px; font-size: 2rem; color: white; animation: bounce 2s infinite; cursor: pointer; text-decoration: none; }
-        .cards-section { min-height: 100vh; padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
-        .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 50px; color: #57606f; position: relative; }
-        .section-title::after { content: ''; display: block; width: 50px; height: 3px; background: var(--primary-color); margin: 10px auto 0; border-radius: 2px; }
+        .cards-section { min-height: 100vh; padding: 80px 20px; max-width: 1200px; margin: 0 auto; background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(8px); border-radius: 30px; margin-top: 40px; margin-bottom: 40px; }
+        .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 50px; color: #2f3542; position: relative; }
+        .section-title::after { content: ''; display: block; width: 60px; height: 3px; background: var(--primary-color); margin: 10px auto 0; border-radius: 2px; }
         .card-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .gift-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: all 0.3s ease; position: relative; min-height: 420px; display: flex; flex-direction: column; }
-        .gift-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-        .lock-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 30px; text-align: center; z-index: 2; transition: opacity 0.5s ease; }
-        .lock-icon { font-size: 2.5rem; color: #ff6b81; margin-bottom: 15px; }
+        .gift-card { background: rgba(255, 255, 255, 0.92); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1); transition: all 0.3s ease; position: relative; min-height: 420px; display: flex; flex-direction: column; border: 1px solid rgba(255,255,255,0.6); }
+        .gift-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+        .lock-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #ffffff 0%, #f1f4f9 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 30px; text-align: center; z-index: 2; transition: opacity 0.5s ease; }
+        .deco-icons { color: #fccbcb; font-size: 1.5rem; margin-bottom: 5px; display: flex; gap: 8px; }
         .target-friend { font-size: 1.3rem; font-weight: 700; color: var(--primary-color); margin-bottom: 10px; letter-spacing: 1px; }
         .question-text { font-size: 1.1rem; font-weight: bold; margin-bottom: 15px; color: #2f3542; line-height: 1.4; }
-        .password-input { width: 80%; padding: 10px 15px; border: 2px solid #ddd; border-radius: 25px; margin-bottom: 15px; text-align: center; font-size: 1rem; outline: none; transition: border-color 0.3s; }
+        .password-input { width: 80%; padding: 10px 15px; border: 2px solid #dcdde1; border-radius: 25px; margin-bottom: 15px; text-align: center; font-size: 1rem; outline: none; transition: border-color 0.3s; background: rgba(255,255,255,0.8); }
         .password-input:focus { border-color: var(--primary-color); }
-        .unlock-btn { background: var(--primary-color); color: white; border: none; padding: 8px 25px; border-radius: 20px; cursor: pointer; font-size: 1rem; box-shadow: 0 4px 10px rgba(74, 105, 189, 0.3); }
-        .card-content { padding: 35px 30px; height: 100%; display: flex; flex-direction: column; opacity: 0; display: none; transition: opacity 0.5s ease; }
+        .unlock-btn { background: var(--primary-color); color: white; border: none; padding: 8px 25px; border-radius: 20px; cursor: pointer; font-size: 1rem; box-shadow: 0 4px 10px rgba(106, 137, 204, 0.3); }
+        .card-content { padding: 35px 30px; height: 100%; display: flex; flex-direction: column; opacity: 0; display: none; transition: opacity 0.5s ease; background: #ffffff; }
         .friend-name { text-align: center; font-size: 1.4rem; margin-bottom: 20px; color: var(--primary-color); font-weight: bold; }
         .blessing-text { font-size: 1rem; line-height: 1.7; color: #57606f; white-space: pre-wrap; }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-15px); } 60% { transform: translateY(-7px); } }
@@ -37,25 +34,20 @@
 </head>
 <body>
 
-    <div class="music-player">
-        <span>🎵 背景音樂</span>
-        <button class="music-btn" id="musicBtn" onclick="toggleMusic()"><i class="fas fa-play" id="playIcon"></i></button>
-    </div>
-    <audio id="bgMusic" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"></audio>
-
     <section class="hero-section">
-        <h1 class="hero-title">前程似錦，畢業快樂！</h1>
+        <h1 class="hero-title">✨ 前程似錦，畢業快樂！ ✨</h1>
         <p class="hero-subtitle">點擊下方箭頭，解鎖屬於我們的青春回憶</p>
         <a href="#cards" class="scroll-down-btn"><i class="fas fa-chevron-down"></i></a>
     </section>
 
     <section class="cards-section" id="cards">
-        <h2 class="section-title">專屬卡片時光</h2>
+        <h2 class="section-title">🎓 專屬卡片時光</h2>
         <div class="card-container">
-            
+
             <div class="gift-card" id="card1">
                 <div class="lock-overlay" id="lock1">
-                    <i class="fas fa-lock lock-icon"></i><div class="target-friend">給：宥愷</div>
+                    <div class="deco-icons"><i class="fas fa-graduation-cap"></i><i class="fas fa-star"></i></div>
+                    <div class="target-friend">給：宥愷</div>
                     <p class="question-text">問題：阿蘭切了什麼水果給你吃</p>
                     <input type="text" class="password-input" id="input1" placeholder="請輸入答案">
                     <button class="unlock-btn" onclick="checkPassword(1, '鳳梨', 'lock1', 'content1')">送出解鎖</button>
@@ -74,7 +66,8 @@
 
             <div class="gift-card" id="card2">
                 <div class="lock-overlay" id="lock2">
-                    <i class="fas fa-lock lock-icon"></i><div class="target-friend">給：育笙</div>
+                    <div class="deco-icons"><i class="fas fa-graduation-cap"></i><i class="fas fa-star"></i></div>
+                    <div class="target-friend">給：育笙</div>
                     <p class="question-text">問題：你一直想跟我去吃的咖哩店名叫做什麼?</p>
                     <input type="text" class="password-input" id="input2" placeholder="請輸入答案">
                     <button class="unlock-btn" onclick="checkPassword(2, '武士咖哩', 'lock2', 'content2')">送出解鎖</button>
@@ -93,7 +86,8 @@
 
             <div class="gift-card" id="card3">
                 <div class="lock-overlay" id="lock3">
-                    <i class="fas fa-lock lock-icon"></i><div class="target-friend">給：侑霖</div>
+                    <div class="deco-icons"><i class="fas fa-graduation-cap"></i><i class="fas fa-star"></i></div>
+                    <div class="target-friend">給：侑霖</div>
                     <p class="question-text">問題：我第一次跟你見面是問你什麼教室？(四個字)</p>
                     <input type="text" class="password-input" id="input3" placeholder="請輸入答案">
                     <button class="unlock-btn" onclick="checkPassword(3, '創意教室', 'lock3', 'content3')">送出解鎖</button>
@@ -112,7 +106,8 @@
 
             <div class="gift-card" id="card4">
                 <div class="lock-overlay" id="lock4">
-                    <i class="fas fa-lock lock-icon"></i><div class="target-friend">給：珮慈</div>
+                    <div class="deco-icons"><i class="fas fa-graduation-cap"></i><i class="fas fa-star"></i></div>
+                    <div class="target-friend">給：珮慈</div>
                     <p class="question-text">問題：請問我最喜歡給你什麼糖果？</p>
                     <input type="text" class="password-input" id="input4" placeholder="請輸入答案">
                     <button class="unlock-btn" onclick="checkPassword(4, '巧克力', 'lock4', 'content4')">送出解鎖</button>
@@ -133,7 +128,8 @@
 
             <div class="gift-card" id="card5">
                 <div class="lock-overlay" id="lock5">
-                    <i class="fas fa-lock lock-icon"></i><div class="target-friend">給：浩佑</div>
+                    <div class="deco-icons"><i class="fas fa-graduation-cap"></i><i class="fas fa-star"></i></div>
+                    <div class="target-friend">給：浩佑</div>
                     <p class="question-text">問題：我是你的誰？</p>
                     <input type="text" class="password-input" id="input5" placeholder="請輸入答案">
                     <button class="unlock-btn" onclick="checkPassword(5, '爸', 'lock5', 'content5')">送出解鎖</button>
@@ -152,7 +148,8 @@
 
             <div class="gift-card" id="card6">
                 <div class="lock-overlay" id="lock6">
-                    <i class="fas fa-lock lock-icon"></i><div class="target-friend">給：辰愷</div>
+                    <div class="deco-icons"><i class="fas fa-graduation-cap"></i><i class="fas fa-star"></i></div>
+                    <div class="target-friend">給：辰愷</div>
                     <p class="question-text">問題：你最喜歡的17成員是？(全名)</p>
                     <input type="text" class="password-input" id="input6" placeholder="請輸入答案">
                     <button class="unlock-btn" onclick="checkPassword(6, '李碩珉', 'lock6', 'content6')">送出解鎖</button>
@@ -171,7 +168,8 @@
 
             <div class="gift-card" id="card7">
                 <div class="lock-overlay" id="lock7">
-                    <i class="fas fa-lock lock-icon"></i><div class="target-friend">給：欣芸</div>
+                    <div class="deco-icons"><i class="fas fa-graduation-cap"></i><i class="fas fa-star"></i></div>
+                    <div class="target-friend">給：欣芸</div>
                     <p class="question-text">問題：我最愛的麵店是叫什麼？</p>
                     <input type="text" class="password-input" id="input7" placeholder="請輸入答案">
                     <button class="unlock-btn" onclick="checkPassword(7, '阿春麵店', 'lock7', 'content7')">送出解鎖</button>
@@ -191,7 +189,8 @@
 
             <div class="gift-card" id="card8">
                 <div class="lock-overlay" id="lock8">
-                    <i class="fas fa-lock lock-icon"></i><div class="target-friend">給：俊瑋</div>
+                    <div class="deco-icons"><i class="fas fa-graduation-cap"></i><i class="fas fa-star"></i></div>
+                    <div class="target-friend">給：俊瑋</div>
                     <p class="question-text">問題：我最常跟你提起誰？</p>
                     <input type="text" class="password-input" id="input8" placeholder="請輸入答案">
                     <button class="unlock-btn" onclick="checkPassword(8, '靖怡', 'lock8', 'content8')">送出解鎖</button>
@@ -202,7 +201,7 @@
 恭喜你要畢業了，我們從三年級開始
 看起來真的像兩個甲(?
 很謝謝你總是和我聊感情層面上的事
-你慢是我大四生活中，情感的中流砥柱
+你是我大四生活中，情感的中流柱
 你感情的事我很抱歉 我好像無能為力為力做些什麼
 我只能真的一直當作你需要的避風港，
 在你需要的時候隨時可以向我傾訴
@@ -216,15 +215,34 @@
                 </div>
             </div>
 
+            <div class="gift-card" id="card9">
+                <div class="lock-overlay" id="lock9">
+                    <div class="deco-icons"><i class="fas fa-graduation-cap"></i><i class="fas fa-star"></i></div>
+                    <div class="target-friend">給：秘密</div>
+                    <p class="question-text">問題：秘密本人會知道的密碼！</p>
+                    <input type="text" class="password-input" id="input9" placeholder="請輸入答案">
+                    <button class="unlock-btn" onclick="checkPassword(9, '我喜歡你', 'lock9', 'content9')">送出解鎖</button>
+                </div>
+                <div class="card-content" id="content9">
+                    <div class="friend-name">To: 秘密</div>
+                    <p class="blessing-text">如果你看的到這張卡片~
+那就代表我應該跟你表白了哈哈
+我跟你真的不是很熟 所以我對我自己會表白也屬實有點驚訝
+我喜歡你 很常跟俊瑋聊起你的事情
+因為你很漂亮 因為你很優秀 因為你是你
+所以我喜歡你 我有試著去接近你 但好像沒辦法縮短這個距離
+很高興你能在你選擇的道路上展翅飛行~
+希望這樣不會造成你的困擾 我也不會要你給我回應</p>
+                </div>
+            </div>
+
         </div>
     </section>
 
     <script>
-        const music = document.getElementById('bgMusic'), playIcon = document.getElementById('playIcon');
-        function toggleMusic() { if (music.paused) { music.play().catch(e => console.log("互動後播放")); playIcon.className = 'fas fa-pause'; } else { music.pause(); playIcon.className = 'fas fa-play'; } }
         function checkPassword(num, ans, lockId, contentId) {
             if (document.getElementById('input' + num).value.trim() === ans) {
-                for (let i = 1; i <= 8; i++) {
+                for (let i = 1; i <= 9; i++) {
                     document.getElementById('lock' + i).style.display = 'flex';
                     document.getElementById('lock' + i).style.opacity = '1';
                     document.getElementById('content' + i).style.display = 'none';
